@@ -5,11 +5,11 @@ import java.util.Objects;
 public class PassengerPlane extends Plane{
 
     //=================FIELDS=================
-    private int passengersCapacity;
+    private final int passengersCapacity;
 
     //=================CONSTRUCTORS=================
-    public PassengerPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int passengersCapacity) {
-        super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
+    public PassengerPlane(String model, int maximumSpeed, int maximumFlightDistance, int maximumLoadCapacity, int passengersCapacity) {
+        super(model, maximumSpeed, maximumFlightDistance, maximumLoadCapacity);
         this.passengersCapacity = passengersCapacity;
     }
 
@@ -25,13 +25,6 @@ public class PassengerPlane extends Plane{
                 ", passengersCapacity=" + passengersCapacity +
                 '}');
     }
-
-//    @Override
-//    public String toString() {
-//        return super.toString().replace("}",
-//                ", passengersCapacity=" + passengersCapacity +
-//                        '}');
-//    }
 
     @Override
     public boolean equals(Object o) {

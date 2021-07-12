@@ -31,12 +31,12 @@ public class AirportTest {
             new experimentalPlane("Ryan X-13 Vertijet", 560, 307, 500, ExperimentalTypes.VTOL, ClassificationLevel.TOP_SECRET)
     );
 
-    private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
+    private static PassengerPlane planeWithMaximumPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
 
     @Test
     public void testGetTransportMilitaryPlanes() {
         Airport airport = new Airport(planes);
-        List<MilitaryPlane> transportMilitaryPlanes = airport.getTransportMilitaryPlanes();
+        List<MilitaryPlane> transportMilitaryPlanes = airport.getListOfTransportMilitaryPlanes();
         boolean flag = false;
         for (MilitaryPlane militaryPlane : transportMilitaryPlanes) {
             if ((militaryPlane.getType() == MilitaryType.TRANSPORT)) {
@@ -51,32 +51,32 @@ public class AirportTest {
     public void testGetPassengerPlaneWithMaxCapacity() {
         System.out.println("TEST testGetPassengerPlaneWithMaxCapacity started!");
         Airport airport = new Airport(planes);
-        PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaxPassengerCapacity));
+        PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaximumPassengersCapacity();
+        Assert.assertTrue(expectedPlaneWithMaxPassengersCapacity.equals(planeWithMaximumPassengerCapacity));
     }
 
     @Test
     public void test3() {
         Airport airport = new Airport(planes);
-        airport.sortByMaxLoadCapacity();
-        List<? extends Plane> planesSortedByMaxLoadCapacity = airport.getPlanes();
+        airport.sortBymaximumLoadCapacity();
+        List<? extends Plane> planesSortedBymaximumLoadCapacity = airport.getListOfPlanes();
 
-        boolean nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
-        for (int i = 0; i < planesSortedByMaxLoadCapacity.size() - 1; i++) {
-            Plane currentPlane = planesSortedByMaxLoadCapacity.get(i);
-            Plane nextPlane = planesSortedByMaxLoadCapacity.get(i + 1);
-            if (currentPlane.getMinLoadCapacity() > nextPlane.getMinLoadCapacity()) {
-                nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
+        boolean nextPlanemaximumLoadCapacityIsHigherThanCurrent = true;
+        for (int i = 0; i < planesSortedBymaximumLoadCapacity.size() - 1; i++) {
+            Plane currentPlane = planesSortedBymaximumLoadCapacity.get(i);
+            Plane nextPlane = planesSortedBymaximumLoadCapacity.get(i + 1);
+            if (currentPlane.getMaximumLoadCapacity() > nextPlane.getMaximumLoadCapacity()) {
+                nextPlanemaximumLoadCapacityIsHigherThanCurrent = false;
                 break;
             }
         }
-        Assert.assertTrue(nextPlaneMaxLoadCapacityIsHigherThanCurrent);
+        Assert.assertTrue(nextPlanemaximumLoadCapacityIsHigherThanCurrent);
     }
 
     @Test
     public void testHasAtLeastOneBomberInMilitaryPlanes() {
         Airport airport = new Airport(planes);
-        List<MilitaryPlane> bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
+        List<MilitaryPlane> bomberMilitaryPlanes = airport.getListOfBomberMilitaryPlanes();
         boolean flag = false;
         for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
             if ((militaryPlane.getType() == MilitaryType.BOMBER)) {
@@ -92,7 +92,7 @@ public class AirportTest {
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
         Airport airport = new Airport(planes);
-        List<experimentalPlane> experimentalPlanes = airport.getExperimentalPlanes();
+        List<experimentalPlane> experimentalPlanes = airport.getListOfExperimentalPlanes();
         boolean hasUnclassifiedPlanes = false;
         for(experimentalPlane experimentalPlane : experimentalPlanes){
             if(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED){

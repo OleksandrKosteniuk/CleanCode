@@ -8,8 +8,8 @@ public class experimentalPlane extends Plane{
     private ExperimentalTypes type;
     private ClassificationLevel classificationLevel;
 
-    public experimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalTypes type, ClassificationLevel classificationLevel) {
-        super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
+    public experimentalPlane(String model, int maximumSpeed, int maximumFlightDistance, int maximumLoadCapacity, ExperimentalTypes type, ClassificationLevel classificationLevel) {
+        super(model, maximumSpeed, maximumFlightDistance, maximumLoadCapacity);
         this.type = type;
         this.classificationLevel = classificationLevel;
     }
